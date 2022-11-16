@@ -51,14 +51,21 @@ def _date_range_parameters(start, end, span_days):
     return start, end, span
 
 
-def forward_date_range(start, end, span_days):
-    &#34;&#34;&#34;
-    Generate tuples with intervals from given range of dates (forward).
+def forward_date_range(start: str, end: str, span_days: int) -&gt; tuple:
+    &#34;&#34;&#34;_Generate tuples of strings with intervals from given range of dates (forward)_
 
-    forward_date_range(&#39;2012-01-01&#39;, &#39;2012-01-5&#39;, 2)
+    Args:
+        start (str): _YYYY-MM-DD_
+        end (str): _YYYY-MM-DD_
+        span_days (int): _Span of days_
 
-    1st yield = (&#39;2012-01-01&#39;, &#39;2012-01-03&#39;)
-    2nd yield = (&#39;2012-01-04&#39;, &#39;2012-01-05&#39;)
+    Returns:
+        tuple: _A tuple including two dates formatted as strings &#39;YYYY-MM-DD&#39;_
+
+    Yields:
+        Iterator[tuple]: _Example: backward_date_range(&#39;2012-01-01&#39;, &#39;2012-01-05&#39;, 2)_  
+            _1st yield = (&#39;2012-01-01&#39;&#39;, &#39;2012-01-03&#39;)_  
+            _2nd yield = (&#39;2012-01-04&#39;, &#39;2012-01-05&#39;)_
     &#34;&#34;&#34;
     start, end, span = _date_range_parameters(start, end, span_days)
     stop = end - span
@@ -71,14 +78,21 @@ def forward_date_range(start, end, span_days):
     yield str(_strftime(start)), str(_strftime(end))
 
 
-def backward_date_range(start, end, span_days):
-    &#34;&#34;&#34;
-    Generate tuples with intervals from given range of dates (backward)
+def backward_date_range(start: str, end: str, span_days: int) -&gt; tuple:
+    &#34;&#34;&#34;_Generate tuples of strings with intervals from given range of dates (backward)_
 
-    backward_date_range(&#39;2012-01-01&#39;, &#39;2012-01-5&#39;, 2)
+    Args:
+        start (str): _YYYY-MM-DD_
+        end (str): _YYYY-MM-DD_
+        span_days (int): _Span of days_
 
-    1st yield = (&#39;2012-01-03&#39;, &#39;2012-01-05&#39;)
-    2nd yield = (&#39;2012-01-01&#39;, &#39;2012-01-02&#39;)
+    Returns:
+        tuple: _A tuple including two dates formatted as strings &#39;YYYY-MM-DD&#39;_
+
+    Yields:
+        Iterator[tuple]: _backward_date_range(&#39;2012-01-01&#39;, &#39;2012-01-05&#39;, 2)_  
+            _1st yield = (&#39;2012-01-04&#39;&#39;, &#39;2012-01-05&#39;)_  
+            _2nd yield = (&#39;2012-01-01&#39;, &#39;2012-01-03&#39;)_
     &#34;&#34;&#34;
     start, end, span = _date_range_parameters(start, end, span_days)
     stop = start + span
@@ -91,20 +105,21 @@ def backward_date_range(start, end, span_days):
     yield str(_strftime(start)), str(_strftime(end))
 
 
-def dr_retry_check(content: str):
-    &#34;&#34;&#34;Checks string for specific errors from the DR service. 
-    Errors can be returned even though response code is 200(succesfully responded with error). 
+def dr_retry_check(content: str) -&gt; bool:
+    &#34;&#34;&#34;_Checks string for specific errors from the DR service. 
+    Errors can be returned even though response code is 200(succesfully responded with error)_. 
 
     Args:
-        content (str): response.text from requester
+        content (str): _response.text from requester_
 
     Raises:
-        ValueError: Could not log in
-        ValueError: Configuration error
-        ValueError: E4042_APPDN_NOT_FOUND
+        ValueError: _Could not log in_
+        ValueError: _Configuration error_
+        ValueError: _E4042_APPDN_NOT_FOUND_
 
     Returns:
-        bool: True if soft error(timeout, rate limt), False if Download Succesful 
+        bool: _True if soft error(timeout, rate limt)_  
+            _False if Download Succesful_ 
     &#34;&#34;&#34;
     if &#34;Failed to Connect&#34; in content:
         print(&#34;Failed to connect, trying again...&#34;)
@@ -127,19 +142,19 @@ def dr_retry_check(content: str):
 
 def download_archipel(start_date: str, end_date: str, login: str, password: str, acceptor: str):
     &#34;&#34;&#34;
-    Download archipel data from data requester
-    start date always starts from 00:00:00
-    end date always ends at 23:59:59
+    _Download archipel data from data requester_  
+    _Start date always starts from 00:00:00_  
+    _End date always ends at 23:59:59_  
 
     Args:
-        start_date (str): &#39;YYYY-MM-DD&#39; 2022-01-30
-        end_date (str): &#39;YYYY-MM-DD&#39;
-        login (str): DR login from DC
-        password (str): DR password from DC
-        acceptor (str): Acceptor &#39;cn&#39; name
+        start_date (str): _&#39;YYYY-MM-DD&#39;_ 
+        end_date (str): _&#39;YYYY-MM-DD&#39;_
+        login (str): _DR login from DC_
+        password (str): _DR password from DC_
+        acceptor (str): _Acceptor &#39;cn&#39; name_
 
     Returns:
-        str: returns response.text from requester
+        str: _returns response.text from requester, usually in csv format_
     &#34;&#34;&#34;
     # reformat date into datetime for DR
     startdatetime = datetime.strptime(start_date, DATE_FORMAT)
@@ -180,25 +195,50 @@ def download_archipel(start_date: str, end_date: str, login: str, password: str,
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
 <dt id="druk.lib.backward_date_range"><code class="name flex">
-<span>def <span class="ident">backward_date_range</span></span>(<span>start, end, span_days)</span>
+<span>def <span class="ident">backward_date_range</span></span>(<span>start: str, end: str, span_days: int) ‑> tuple</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generate tuples with intervals from given range of dates (backward)</p>
-<p>backward_date_range('2012-01-01', '2012-01-5', 2)</p>
-<p>1st yield = ('2012-01-03', '2012-01-05')
-2nd yield = ('2012-01-01', '2012-01-02')</p></div>
+<div class="desc"><p><em>Generate tuples of strings with intervals from given range of dates (backward)</em></p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>start</code></strong> :&ensp;<code>str</code></dt>
+<dd><em>YYYY-MM-DD</em></dd>
+<dt><strong><code>end</code></strong> :&ensp;<code>str</code></dt>
+<dd><em>YYYY-MM-DD</em></dd>
+<dt><strong><code>span_days</code></strong> :&ensp;<code>int</code></dt>
+<dd><em>Span of days</em></dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd><em>A tuple including two dates formatted as strings 'YYYY-MM-DD'</em></dd>
+</dl>
+<h2 id="yields">Yields</h2>
+<dl>
+<dt><code>Iterator[tuple]</code></dt>
+<dd><em>backward_date_range('2012-01-01', '2012-01-05', 2)</em><br>
+<em>1st yield = ('2012-01-04'', '2012-01-05')</em><br>
+<em>2nd yield = ('2012-01-01', '2012-01-03')</em></dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def backward_date_range(start, end, span_days):
-    &#34;&#34;&#34;
-    Generate tuples with intervals from given range of dates (backward)
+<pre><code class="python">def backward_date_range(start: str, end: str, span_days: int) -&gt; tuple:
+    &#34;&#34;&#34;_Generate tuples of strings with intervals from given range of dates (backward)_
 
-    backward_date_range(&#39;2012-01-01&#39;, &#39;2012-01-5&#39;, 2)
+    Args:
+        start (str): _YYYY-MM-DD_
+        end (str): _YYYY-MM-DD_
+        span_days (int): _Span of days_
 
-    1st yield = (&#39;2012-01-03&#39;, &#39;2012-01-05&#39;)
-    2nd yield = (&#39;2012-01-01&#39;, &#39;2012-01-02&#39;)
+    Returns:
+        tuple: _A tuple including two dates formatted as strings &#39;YYYY-MM-DD&#39;_
+
+    Yields:
+        Iterator[tuple]: _backward_date_range(&#39;2012-01-01&#39;, &#39;2012-01-05&#39;, 2)_  
+            _1st yield = (&#39;2012-01-04&#39;&#39;, &#39;2012-01-05&#39;)_  
+            _2nd yield = (&#39;2012-01-01&#39;, &#39;2012-01-03&#39;)_
     &#34;&#34;&#34;
     start, end, span = _date_range_parameters(start, end, span_days)
     stop = start + span
@@ -215,26 +255,27 @@ def download_archipel(start_date: str, end_date: str, login: str, password: str,
 <span>def <span class="ident">download_archipel</span></span>(<span>start_date: str, end_date: str, login: str, password: str, acceptor: str)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Download archipel data from data requester
-start date always starts from 00:00:00
-end date always ends at 23:59:59</p>
+<div class="desc"><p><em>Download archipel data from data requester</em><br>
+<em>Start date always starts from 00:00:00</em><br>
+<em>End date always ends at 23:59:59</em>
+</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>start_date</code></strong> :&ensp;<code>str</code></dt>
-<dd>'YYYY-MM-DD' 2022-01-30</dd>
+<dd><em>'YYYY-MM-DD'</em> </dd>
 <dt><strong><code>end_date</code></strong> :&ensp;<code>str</code></dt>
-<dd>'YYYY-MM-DD'</dd>
+<dd><em>'YYYY-MM-DD'</em></dd>
 <dt><strong><code>login</code></strong> :&ensp;<code>str</code></dt>
-<dd>DR login from DC</dd>
+<dd><em>DR login from DC</em></dd>
 <dt><strong><code>password</code></strong> :&ensp;<code>str</code></dt>
-<dd>DR password from DC</dd>
+<dd><em>DR password from DC</em></dd>
 <dt><strong><code>acceptor</code></strong> :&ensp;<code>str</code></dt>
-<dd>Acceptor 'cn' name</dd>
+<dd><em>Acceptor 'cn' name</em></dd>
 </dl>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>str</code></dt>
-<dd>returns response.text from requester</dd>
+<dd><em>returns response.text from requester, usually in csv format</em></dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -242,19 +283,19 @@ end date always ends at 23:59:59</p>
 </summary>
 <pre><code class="python">def download_archipel(start_date: str, end_date: str, login: str, password: str, acceptor: str):
     &#34;&#34;&#34;
-    Download archipel data from data requester
-    start date always starts from 00:00:00
-    end date always ends at 23:59:59
+    _Download archipel data from data requester_  
+    _Start date always starts from 00:00:00_  
+    _End date always ends at 23:59:59_  
 
     Args:
-        start_date (str): &#39;YYYY-MM-DD&#39; 2022-01-30
-        end_date (str): &#39;YYYY-MM-DD&#39;
-        login (str): DR login from DC
-        password (str): DR password from DC
-        acceptor (str): Acceptor &#39;cn&#39; name
+        start_date (str): _&#39;YYYY-MM-DD&#39;_ 
+        end_date (str): _&#39;YYYY-MM-DD&#39;_
+        login (str): _DR login from DC_
+        password (str): _DR password from DC_
+        acceptor (str): _Acceptor &#39;cn&#39; name_
 
     Returns:
-        str: returns response.text from requester
+        str: _returns response.text from requester, usually in csv format_
     &#34;&#34;&#34;
     # reformat date into datetime for DR
     startdatetime = datetime.strptime(start_date, DATE_FORMAT)
@@ -288,48 +329,50 @@ end date always ends at 23:59:59</p>
 </details>
 </dd>
 <dt id="druk.lib.dr_retry_check"><code class="name flex">
-<span>def <span class="ident">dr_retry_check</span></span>(<span>content: str)</span>
+<span>def <span class="ident">dr_retry_check</span></span>(<span>content: str) ‑> bool</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Checks string for specific errors from the DR service.
-Errors can be returned even though response code is 200(succesfully responded with error). </p>
+<div class="desc"><p><em>Checks string for specific errors from the DR service.
+Errors can be returned even though response code is 200(succesfully responded with error)</em>. </p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>content</code></strong> :&ensp;<code>str</code></dt>
-<dd>response.text from requester</dd>
+<dd><em>response.text from requester</em></dd>
 </dl>
 <h2 id="raises">Raises</h2>
 <dl>
 <dt><code>ValueError</code></dt>
-<dd>Could not log in</dd>
+<dd><em>Could not log in</em></dd>
 <dt><code>ValueError</code></dt>
-<dd>Configuration error</dd>
+<dd><em>Configuration error</em></dd>
 <dt><code>ValueError</code></dt>
-<dd>E4042_APPDN_NOT_FOUND</dd>
+<dd><em>E4042_APPDN_NOT_FOUND</em></dd>
 </dl>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>bool</code></dt>
-<dd>True if soft error(timeout, rate limt), False if Download Succesful</dd>
+<dd><em>True if soft error(timeout, rate limt)</em><br>
+<em>False if Download Succesful</em></dd>
 </dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def dr_retry_check(content: str):
-    &#34;&#34;&#34;Checks string for specific errors from the DR service. 
-    Errors can be returned even though response code is 200(succesfully responded with error). 
+<pre><code class="python">def dr_retry_check(content: str) -&gt; bool:
+    &#34;&#34;&#34;_Checks string for specific errors from the DR service. 
+    Errors can be returned even though response code is 200(succesfully responded with error)_. 
 
     Args:
-        content (str): response.text from requester
+        content (str): _response.text from requester_
 
     Raises:
-        ValueError: Could not log in
-        ValueError: Configuration error
-        ValueError: E4042_APPDN_NOT_FOUND
+        ValueError: _Could not log in_
+        ValueError: _Configuration error_
+        ValueError: _E4042_APPDN_NOT_FOUND_
 
     Returns:
-        bool: True if soft error(timeout, rate limt), False if Download Succesful 
+        bool: _True if soft error(timeout, rate limt)_  
+            _False if Download Succesful_ 
     &#34;&#34;&#34;
     if &#34;Failed to Connect&#34; in content:
         print(&#34;Failed to connect, trying again...&#34;)
@@ -351,25 +394,50 @@ Errors can be returned even though response code is 200(succesfully responded wi
 </details>
 </dd>
 <dt id="druk.lib.forward_date_range"><code class="name flex">
-<span>def <span class="ident">forward_date_range</span></span>(<span>start, end, span_days)</span>
+<span>def <span class="ident">forward_date_range</span></span>(<span>start: str, end: str, span_days: int) ‑> tuple</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generate tuples with intervals from given range of dates (forward).</p>
-<p>forward_date_range('2012-01-01', '2012-01-5', 2)</p>
-<p>1st yield = ('2012-01-01', '2012-01-03')
-2nd yield = ('2012-01-04', '2012-01-05')</p></div>
+<div class="desc"><p><em>Generate tuples of strings with intervals from given range of dates (forward)</em></p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>start</code></strong> :&ensp;<code>str</code></dt>
+<dd><em>YYYY-MM-DD</em></dd>
+<dt><strong><code>end</code></strong> :&ensp;<code>str</code></dt>
+<dd><em>YYYY-MM-DD</em></dd>
+<dt><strong><code>span_days</code></strong> :&ensp;<code>int</code></dt>
+<dd><em>Span of days</em></dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd><em>A tuple including two dates formatted as strings 'YYYY-MM-DD'</em></dd>
+</dl>
+<h2 id="yields">Yields</h2>
+<dl>
+<dt><code>Iterator[tuple]</code></dt>
+<dd><em>Example: backward_date_range('2012-01-01', '2012-01-05', 2)</em><br>
+<em>1st yield = ('2012-01-01'', '2012-01-03')</em><br>
+<em>2nd yield = ('2012-01-04', '2012-01-05')</em></dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def forward_date_range(start, end, span_days):
-    &#34;&#34;&#34;
-    Generate tuples with intervals from given range of dates (forward).
+<pre><code class="python">def forward_date_range(start: str, end: str, span_days: int) -&gt; tuple:
+    &#34;&#34;&#34;_Generate tuples of strings with intervals from given range of dates (forward)_
 
-    forward_date_range(&#39;2012-01-01&#39;, &#39;2012-01-5&#39;, 2)
+    Args:
+        start (str): _YYYY-MM-DD_
+        end (str): _YYYY-MM-DD_
+        span_days (int): _Span of days_
 
-    1st yield = (&#39;2012-01-01&#39;, &#39;2012-01-03&#39;)
-    2nd yield = (&#39;2012-01-04&#39;, &#39;2012-01-05&#39;)
+    Returns:
+        tuple: _A tuple including two dates formatted as strings &#39;YYYY-MM-DD&#39;_
+
+    Yields:
+        Iterator[tuple]: _Example: backward_date_range(&#39;2012-01-01&#39;, &#39;2012-01-05&#39;, 2)_  
+            _1st yield = (&#39;2012-01-01&#39;&#39;, &#39;2012-01-03&#39;)_  
+            _2nd yield = (&#39;2012-01-04&#39;, &#39;2012-01-05&#39;)_
     &#34;&#34;&#34;
     start, end, span = _date_range_parameters(start, end, span_days)
     stop = end - span
