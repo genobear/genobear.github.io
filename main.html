@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>druk.main API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>druk.main</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import time
+import os
+import requests
+from datetime import datetime, timedelta
+import lib as DR
+import traceback
+
+
+DATE_FORMAT = &#39;%Y-%m-%d&#39;
+DATE_STEP = timedelta(days=1)
+
+
+# def _strptime(string):
+#     return datetime.strptime(string, DATE_FORMAT)
+
+
+# def _strftime(date):
+#     return date.strftime(DATE_FORMAT)
+
+
+# def _date_range_parameters(start, end, span_days):
+#     start = _strptime(start)
+#     end = _strptime(end)
+#     span = timedelta(days=span_days)
+#     return start, end, span
+
+
+# def forward_date_range(start, end, span_days):
+#     &#34;&#34;&#34;
+#     Generate tuples with intervals from given range of dates (forward).
+
+#     forward_date_range(&#39;2012-01-01&#39;, &#39;2012-01-5&#39;, 2)
+
+#     1st yield = (&#39;2012-01-01&#39;, &#39;2012-01-03&#39;)
+#     2nd yield = (&#39;2012-01-04&#39;, &#39;2012-01-05&#39;)
+#     &#34;&#34;&#34;
+#     start, end, span = _date_range_parameters(start, end, span_days)
+#     stop = end - span
+
+#     while start &lt; stop:
+#         current = start + span
+#         yield _strftime(start), _strftime(current)
+#         start = current + DATE_STEP
+
+#     yield str(_strftime(start)), str(_strftime(end))
+
+
+# def backward_date_range(start, end, span_days):
+#     &#34;&#34;&#34;
+#     Generate tuples with intervals from given range of dates (backward)
+
+#     backward_date_range(&#39;2012-01-01&#39;, &#39;2012-01-5&#39;, 2)
+
+#     1st yield = (&#39;2012-01-03&#39;, &#39;2012-01-05&#39;)
+#     2nd yield = (&#39;2012-01-01&#39;, &#39;2012-01-02&#39;)
+#     &#34;&#34;&#34;
+#     start, end, span = _date_range_parameters(start, end, span_days)
+#     stop = start + span
+
+#     while end &gt; stop:
+#         current = end - span
+#         yield _strftime(current), _strftime(end)
+#         end = current - DATE_STEP
+
+#     yield str(_strftime(start)), str(_strftime(end))
+
+#     &#34;&#34;&#34;
+#     Pass response.text as content(str):
+#     If content contains soft error return TRUE(Timeout/Rate Limted)
+#     If content contains hard error Raise ValueError(configuration issues)
+#     If Download succesful return False
+#     &#34;&#34;&#34;
+
+
+# def dr_retry_check(content: str):
+#     &#34;&#34;&#34;Checks string for specific errors from the DR service.
+#     Errors can be returned even though response code is 200(succesfully responded with error).
+
+#     Args:
+#         content (str): response.text from requester
+
+#     Raises:
+#         ValueError: Could not log in
+#         ValueError: Configuration error
+#         ValueError: E4042_APPDN_NOT_FOUND
+
+#     Returns:
+#         bool: True if soft error(timeout, rate limt), False if Download Succesful
+#     &#34;&#34;&#34;
+#     if &#34;Failed to Connect&#34; in content:
+#         print(&#34;Failed to connect, trying again...&#34;)
+#         return True
+#     elif &#34;ACCESS DENIED&#34; in content:
+#         print(&#34;ACCESS DENIED - waiting 60s&#34;)
+#         time.sleep(60)
+#         return True
+#     elif &#34;Could not log in&#34; in content:
+#         raise ValueError(&#34;Could not log in&#34;)
+#     elif &#34;Configuration error&#34; in content:
+#         raise ValueError(&#34;Configuration error&#34;)
+#     elif &#34;E4042_APPDN_NOT_FOUND&#34; in content:
+#         print(&#34;E4042_APPDN_NOT_FOUND&#34;)
+#         raise ValueError(&#34;E4042_APPDN_NOT_FOUND&#34;)
+#     else:
+#         print(&#34;Dowload Succesful&#34;)
+#         return False
+
+# def download_archipel(start_date: str, end_date: str, login: str, password: str, acceptor: str):
+#     &#34;&#34;&#34;
+#     Download archipel data from data requester
+#     start date always starts from 00:00:00
+#     end date always ends at 23:59:59
+
+#     Args:
+#         start_date (str): &#39;YYYY-MM-DD&#39; 2022-01-30
+#         end_date (str): &#39;YYYY-MM-DD&#39;
+#         login (str): DR login from DC
+#         password (str): DR password from DC
+#         acceptor (str): Acceptor &#39;cn&#39; name
+
+#     Returns:
+#         str: returns response.text from requester
+#     &#34;&#34;&#34;
+#     # reformat date into datetime for DR
+#     startdatetime = datetime.strptime(start_date, DATE_FORMAT)
+#     startdatetime = datetime.strftime(startdatetime, &#39;%Y%m%d&#39;)
+#     startdatetime = f&#39;{startdatetime}000000&#39;
+#     enddatetime = datetime.strptime(end_date, DATE_FORMAT)
+#     enddatetime = datetime.strftime(enddatetime, &#39;%Y%m%d&#39;)
+#     enddatetime = f&#39;{enddatetime}235959&#39;
+
+#     status = True
+
+#     while status:
+#         payload = {
+#             &#39;login&#39;: login,
+#             &#39;password&#39;: password,
+#             &#39;city&#39;: acceptor,
+#             &#39;report&#39;: &#39;archipel_transactionspub&#39;,
+#             &#39;startdatetime&#39;: startdatetime,
+#             &#39;enddatetime&#39;: enddatetime
+#         }
+#         print(
+#             f&#34;Start DL for {acceptor}/nStart:{startdatetime} End:{enddatetime}&#34;)
+#         response = requests.post(
+#             &#39;https://my.flowbird.io/drdirect.php&#39;, data=payload)
+#         print(response)
+#         status = dr_retry_check(response.text)
+#         if status:
+#             pass
+#         else:
+#             return response.text
+
+
+def download_archipel_from_list(login, password, start, end):
+    &#34;&#34;&#34;Opens acceptors.txt from root directory. Acceptor must be the &#39;cn&#39; name.
+    Iterates through acceptors and saves data to &#39;data/archipel&#39;
+
+    Args:
+        login (string): Datarequester login from DC
+        password (string): Datarequester password from DC
+        start (string): Start date and time YYYYMMDDHHMMSS e.g&#39;20220130000000&#39;
+        end (string): End date and time YYYYMMDDHHMMSS e.g&#39;20220130000000&#39;
+    &#34;&#34;&#34;
+    if not os.path.exists(f&#39;data/archipel&#39;):
+        os.makedirs(f&#39;data/archipel&#39;)
+
+    filename = f&#34;acceptors.txt&#34;
+    with open(filename, &#34;r&#34;) as list:
+
+        for acceptor in list:
+            acceptor = acceptor.rstrip(&#39;\n&#39;)
+            print(acceptor)
+            status = True
+            while status:
+                payload = {
+                    &#39;login&#39;: login,
+                    &#39;password&#39;: password,
+                    &#39;city&#39;: acceptor,
+                    &#39;report&#39;: &#39;archipel_transactionspub&#39;,
+                    &#39;startdatetime&#39;: start,
+                    &#39;enddatetime&#39;: end
+                }
+                print(f&#34;Start DL for {acceptor}&#34;)
+                response = requests.post(
+                    &#39;https://my.flowbird.io/drdirect.php&#39;, data=payload)
+                print(response)
+                status = DR.dr_retry_check(response.text)
+                if status:
+                    pass
+                else:
+                    with open(f&#34;data/archipel/{acceptor}_{start}_{end}.csv&#34;, &#34;w&#34;, encoding=&#34;utf-8&#34;) as f:
+                        f.write(response.text)
+        print(&#34;All Archipel DL Finished&#34;)
+    pass
+
+
+def download_park_management_from_list(login, password):
+    &#34;&#34;&#34;Opens parks.txt from root directory.
+    parks.txt contains list of park &#39;cn&#39; names.
+    Iterate though list and saves data to &#39;data/park_management&#39;
+
+    Args:
+        login (string): DR login from DC
+        password (string): DR password from DC
+    &#34;&#34;&#34;
+    if not os.path.exists(f&#39;data/park_management&#39;):
+        os.makedirs(f&#39;data/park_management&#39;)
+
+    filename = f&#34;parks.txt&#34;
+    with open(filename, &#34;r&#34;) as list:
+
+        for park in list:
+            park = park.rstrip(&#39;\n&#39;)
+            print(park)
+            status = True
+            while status:
+                payload = {
+                    &#39;login&#39;: login,
+                    &#39;password&#39;: password,
+                    &#39;city&#39;: park,
+                    &#39;report&#39;: &#39;current_consumable_indicators&#39;
+                }
+                print(f&#34;Start DL for {park}&#34;)
+                response = requests.post(
+                    &#39;https://my.flowbird.io/drdirect.php&#39;, data=payload)
+                print(response)
+                status = DR.dr_retry_check(response.text)
+                if status:
+                    pass
+                else:
+                    with open(f&#34;data/park_management/ParkManagement_{park}.csv&#34;, &#34;w&#34;, encoding=&#34;utf-8&#34;) as f:
+                        f.write(response.text)
+        print(&#34;All Parks DL Finished&#34;)
+
+
+def batch_download_archipel(start_date, end_date, login, password, acceptor, batch_size):
+    &#34;&#34;&#34;Download large data set in smaller batches. Saves each batch in seperate file. 
+    Batches are saved to &#39;data/archipel/{acceptor}&#39;
+
+    Args:
+        start_date (string): YYYY-MM-DD e.g 2022-01-30 the start time is always 00:00:00
+        end_date (string): YYYY-MM-DD e.g 2022-01-30 the end time is always 23:59:59
+        login (string): DR login from DC
+        password (string): DR login from DC
+        acceptor (string): Acceptor &#39;cn&#39; name
+        batch_size (int): Number of days in each batch
+    &#34;&#34;&#34;
+    if not os.path.exists(f&#39;data/archipel/{acceptor}&#39;):
+        os.makedirs(f&#39;data/archipel/{acceptor}&#39;)
+
+    for start, end in DR.forward_date_range(start_date, end_date, batch_size):
+        print(&#39;&#39;)
+        data = DR.download_archipel(start, end, login, password, acceptor)
+        with open(f&#34;data/archipel/{acceptor}/{acceptor}_{start}_{end}.csv&#34;, &#34;w&#34;, encoding=&#34;utf-8&#34;) as f:
+            f.write(data)
+    pass
+
+
+if __name__ == &#34;__main__&#34;:
+    batch_download_archipel(&#34;2022-01-01&#34;, &#34;2022-08-31&#34;,
+                            &#39;arch_druk&#39;, &#39;druk9999&#39;, &#39;Shropshire_council_sp&#39;, 30)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="druk.main.batch_download_archipel"><code class="name flex">
+<span>def <span class="ident">batch_download_archipel</span></span>(<span>start_date, end_date, login, password, acceptor, batch_size)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Download large data set in smaller batches. Saves each batch in seperate file.
+Batches are saved to 'data/archipel/{acceptor}'</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>start_date</code></strong> :&ensp;<code>string</code></dt>
+<dd>YYYY-MM-DD e.g 2022-01-30 the start time is always 00:00:00</dd>
+<dt><strong><code>end_date</code></strong> :&ensp;<code>string</code></dt>
+<dd>YYYY-MM-DD e.g 2022-01-30 the end time is always 23:59:59</dd>
+<dt><strong><code>login</code></strong> :&ensp;<code>string</code></dt>
+<dd>DR login from DC</dd>
+<dt><strong><code>password</code></strong> :&ensp;<code>string</code></dt>
+<dd>DR login from DC</dd>
+<dt><strong><code>acceptor</code></strong> :&ensp;<code>string</code></dt>
+<dd>Acceptor 'cn' name</dd>
+<dt><strong><code>batch_size</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of days in each batch</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def batch_download_archipel(start_date, end_date, login, password, acceptor, batch_size):
+    &#34;&#34;&#34;Download large data set in smaller batches. Saves each batch in seperate file. 
+    Batches are saved to &#39;data/archipel/{acceptor}&#39;
+
+    Args:
+        start_date (string): YYYY-MM-DD e.g 2022-01-30 the start time is always 00:00:00
+        end_date (string): YYYY-MM-DD e.g 2022-01-30 the end time is always 23:59:59
+        login (string): DR login from DC
+        password (string): DR login from DC
+        acceptor (string): Acceptor &#39;cn&#39; name
+        batch_size (int): Number of days in each batch
+    &#34;&#34;&#34;
+    if not os.path.exists(f&#39;data/archipel/{acceptor}&#39;):
+        os.makedirs(f&#39;data/archipel/{acceptor}&#39;)
+
+    for start, end in DR.forward_date_range(start_date, end_date, batch_size):
+        print(&#39;&#39;)
+        data = DR.download_archipel(start, end, login, password, acceptor)
+        with open(f&#34;data/archipel/{acceptor}/{acceptor}_{start}_{end}.csv&#34;, &#34;w&#34;, encoding=&#34;utf-8&#34;) as f:
+            f.write(data)
+    pass</code></pre>
+</details>
+</dd>
+<dt id="druk.main.download_archipel_from_list"><code class="name flex">
+<span>def <span class="ident">download_archipel_from_list</span></span>(<span>login, password, start, end)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Opens acceptors.txt from root directory. Acceptor must be the 'cn' name.
+Iterates through acceptors and saves data to 'data/archipel'</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>login</code></strong> :&ensp;<code>string</code></dt>
+<dd>Datarequester login from DC</dd>
+<dt><strong><code>password</code></strong> :&ensp;<code>string</code></dt>
+<dd>Datarequester password from DC</dd>
+<dt><strong><code>start</code></strong> :&ensp;<code>string</code></dt>
+<dd>Start date and time YYYYMMDDHHMMSS e.g'20220130000000'</dd>
+<dt><strong><code>end</code></strong> :&ensp;<code>string</code></dt>
+<dd>End date and time YYYYMMDDHHMMSS e.g'20220130000000'</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def download_archipel_from_list(login, password, start, end):
+    &#34;&#34;&#34;Opens acceptors.txt from root directory. Acceptor must be the &#39;cn&#39; name.
+    Iterates through acceptors and saves data to &#39;data/archipel&#39;
+
+    Args:
+        login (string): Datarequester login from DC
+        password (string): Datarequester password from DC
+        start (string): Start date and time YYYYMMDDHHMMSS e.g&#39;20220130000000&#39;
+        end (string): End date and time YYYYMMDDHHMMSS e.g&#39;20220130000000&#39;
+    &#34;&#34;&#34;
+    if not os.path.exists(f&#39;data/archipel&#39;):
+        os.makedirs(f&#39;data/archipel&#39;)
+
+    filename = f&#34;acceptors.txt&#34;
+    with open(filename, &#34;r&#34;) as list:
+
+        for acceptor in list:
+            acceptor = acceptor.rstrip(&#39;\n&#39;)
+            print(acceptor)
+            status = True
+            while status:
+                payload = {
+                    &#39;login&#39;: login,
+                    &#39;password&#39;: password,
+                    &#39;city&#39;: acceptor,
+                    &#39;report&#39;: &#39;archipel_transactionspub&#39;,
+                    &#39;startdatetime&#39;: start,
+                    &#39;enddatetime&#39;: end
+                }
+                print(f&#34;Start DL for {acceptor}&#34;)
+                response = requests.post(
+                    &#39;https://my.flowbird.io/drdirect.php&#39;, data=payload)
+                print(response)
+                status = DR.dr_retry_check(response.text)
+                if status:
+                    pass
+                else:
+                    with open(f&#34;data/archipel/{acceptor}_{start}_{end}.csv&#34;, &#34;w&#34;, encoding=&#34;utf-8&#34;) as f:
+                        f.write(response.text)
+        print(&#34;All Archipel DL Finished&#34;)
+    pass</code></pre>
+</details>
+</dd>
+<dt id="druk.main.download_park_management_from_list"><code class="name flex">
+<span>def <span class="ident">download_park_management_from_list</span></span>(<span>login, password)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Opens parks.txt from root directory.
+parks.txt contains list of park 'cn' names.
+Iterate though list and saves data to 'data/park_management'</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>login</code></strong> :&ensp;<code>string</code></dt>
+<dd>DR login from DC</dd>
+<dt><strong><code>password</code></strong> :&ensp;<code>string</code></dt>
+<dd>DR password from DC</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def download_park_management_from_list(login, password):
+    &#34;&#34;&#34;Opens parks.txt from root directory.
+    parks.txt contains list of park &#39;cn&#39; names.
+    Iterate though list and saves data to &#39;data/park_management&#39;
+
+    Args:
+        login (string): DR login from DC
+        password (string): DR password from DC
+    &#34;&#34;&#34;
+    if not os.path.exists(f&#39;data/park_management&#39;):
+        os.makedirs(f&#39;data/park_management&#39;)
+
+    filename = f&#34;parks.txt&#34;
+    with open(filename, &#34;r&#34;) as list:
+
+        for park in list:
+            park = park.rstrip(&#39;\n&#39;)
+            print(park)
+            status = True
+            while status:
+                payload = {
+                    &#39;login&#39;: login,
+                    &#39;password&#39;: password,
+                    &#39;city&#39;: park,
+                    &#39;report&#39;: &#39;current_consumable_indicators&#39;
+                }
+                print(f&#34;Start DL for {park}&#34;)
+                response = requests.post(
+                    &#39;https://my.flowbird.io/drdirect.php&#39;, data=payload)
+                print(response)
+                status = DR.dr_retry_check(response.text)
+                if status:
+                    pass
+                else:
+                    with open(f&#34;data/park_management/ParkManagement_{park}.csv&#34;, &#34;w&#34;, encoding=&#34;utf-8&#34;) as f:
+                        f.write(response.text)
+        print(&#34;All Parks DL Finished&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="druk" href="index.html">druk</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="druk.main.batch_download_archipel" href="#druk.main.batch_download_archipel">batch_download_archipel</a></code></li>
+<li><code><a title="druk.main.download_archipel_from_list" href="#druk.main.download_archipel_from_list">download_archipel_from_list</a></code></li>
+<li><code><a title="druk.main.download_park_management_from_list" href="#druk.main.download_park_management_from_list">download_park_management_from_list</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
