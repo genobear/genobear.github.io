@@ -26,27 +26,25 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import time
-import os
-import requests
-from datetime import datetime, timedelta
-import lib as DR
+<pre><code class="python">import os
+import time
 import traceback
+from datetime import datetime, timedelta
+
+import requests
+
+import lib as DR
 
 
-DATE_FORMAT = &#39;%Y-%m-%d&#39;
-DATE_STEP = timedelta(days=1)
-
-
-def download_archipel_from_list(login, password, start, end):
-    &#34;&#34;&#34;Opens acceptors.txt from root directory. Acceptor must be the &#39;cn&#39; name.
-    Iterates through acceptors and saves data to &#39;data/archipel&#39;
+def download_archipel_from_list(login: str, password: str, start: str, end: str) -&gt; None:
+    &#34;&#34;&#34;_Opens acceptors.txt from root directory. Each line must be the &#39;cn&#39; name of the acceptor.  
+    Iterates through acceptors and saves data to &#39;data/archipel_&#39;
 
     Args:
-        login (string): Datarequester login from DC
-        password (string): Datarequester password from DC
-        start (string): Start date and time YYYYMMDDHHMMSS e.g&#39;20220130000000&#39;
-        end (string): End date and time YYYYMMDDHHMMSS e.g&#39;20220130000000&#39;
+        login (str): _DR login from DC_
+        password (str): _DR password from DC_
+        start (str): _Start date and time YYYYMMDDHHMMSS e.g&#39;20220130000000&#39;_
+        end (str): _End date and time YYYYMMDDHHMMSS e.g&#39;20220130000000&#39;_
     &#34;&#34;&#34;
     if not os.path.exists(f&#39;data/archipel&#39;):
         os.makedirs(f&#39;data/archipel&#39;)
@@ -81,14 +79,14 @@ def download_archipel_from_list(login, password, start, end):
     pass
 
 
-def download_park_management_from_list(login, password):
-    &#34;&#34;&#34;Opens parks.txt from root directory.
-    parks.txt contains list of park &#39;cn&#39; names.
-    Iterate though list and saves data to &#39;data/park_management&#39;
+def download_park_management_from_list(login: str, password: str) -&gt; None:
+    &#34;&#34;&#34;_Opens parks.txt from root directory.  
+    parks.txt contains list of park &#39;cn&#39; names.  
+    Iterate though list and saves data to &#39;data/park_management&#39;_
 
     Args:
-        login (string): DR login from DC
-        password (string): DR password from DC
+        login (str): _DR login from DC_
+        password (str): _DR password from DC_
     &#34;&#34;&#34;
     if not os.path.exists(f&#39;data/park_management&#39;):
         os.makedirs(f&#39;data/park_management&#39;)
@@ -120,17 +118,17 @@ def download_park_management_from_list(login, password):
         print(&#34;All Parks DL Finished&#34;)
 
 
-def batch_download_archipel(start_date, end_date, login, password, acceptor, batch_size):
-    &#34;&#34;&#34;Download large data set in smaller batches. Saves each batch in seperate file. 
-    Batches are saved to &#39;data/archipel/{acceptor}&#39;
+def batch_download_archipel(start_date: str, end_date: str, login: str, password: str, acceptor: str, batch_size: str) -&gt; None:
+    &#34;&#34;&#34;_Download large data set in smaller batches. Saves each batch in seperate file.  
+    Batches are saved to &#39;data/archipel/{acceptor}_&#39;
 
     Args:
-        start_date (string): YYYY-MM-DD e.g 2022-01-30 the start time is always 00:00:00
-        end_date (string): YYYY-MM-DD e.g 2022-01-30 the end time is always 23:59:59
-        login (string): DR login from DC
-        password (string): DR login from DC
-        acceptor (string): Acceptor &#39;cn&#39; name
-        batch_size (int): Number of days in each batch
+        start_date (str): _YYYY-MM-DD e.g 2022-01-30 the start time is always 00:00:00_
+        end_date (str): _YYYY-MM-DD e.g 2022-01-30 the end time is always 23:59:59_
+        login (str): _DR login from DC_
+        password (str): _DR login from DC_
+        acceptor (str): _Acceptor &#39;cn&#39; name_
+        batch_size (int): _Number of days in each batch_
     &#34;&#34;&#34;
     if not os.path.exists(f&#39;data/archipel/{acceptor}&#39;):
         os.makedirs(f&#39;data/archipel/{acceptor}&#39;)
@@ -145,7 +143,7 @@ def batch_download_archipel(start_date, end_date, login, password, acceptor, bat
 
 if __name__ == &#34;__main__&#34;:
     batch_download_archipel(&#34;2022-01-01&#34;, &#34;2022-08-31&#34;,
-                            &#39;arch_druk&#39;, &#39;druk9999&#39;, &#39;Shropshire_council_sp&#39;, 30)</code></pre>
+                            &#39;Test&#39;, &#39;Test&#39;, &#39;Test&#39;, 1)</code></pre>
 </details>
 </section>
 <section>
@@ -156,41 +154,41 @@ if __name__ == &#34;__main__&#34;:
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
 <dt id="druk.main.batch_download_archipel"><code class="name flex">
-<span>def <span class="ident">batch_download_archipel</span></span>(<span>start_date, end_date, login, password, acceptor, batch_size)</span>
+<span>def <span class="ident">batch_download_archipel</span></span>(<span>start_date: str, end_date: str, login: str, password: str, acceptor: str, batch_size: str) ‑> None</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Download large data set in smaller batches. Saves each batch in seperate file.
-Batches are saved to 'data/archipel/{acceptor}'</p>
+<div class="desc"><p><em>Download large data set in smaller batches. Saves each batch in seperate file.<br>
+Batches are saved to 'data/archipel/{acceptor}</em>'</p>
 <h2 id="args">Args</h2>
 <dl>
-<dt><strong><code>start_date</code></strong> :&ensp;<code>string</code></dt>
-<dd>YYYY-MM-DD e.g 2022-01-30 the start time is always 00:00:00</dd>
-<dt><strong><code>end_date</code></strong> :&ensp;<code>string</code></dt>
-<dd>YYYY-MM-DD e.g 2022-01-30 the end time is always 23:59:59</dd>
-<dt><strong><code>login</code></strong> :&ensp;<code>string</code></dt>
-<dd>DR login from DC</dd>
-<dt><strong><code>password</code></strong> :&ensp;<code>string</code></dt>
-<dd>DR login from DC</dd>
-<dt><strong><code>acceptor</code></strong> :&ensp;<code>string</code></dt>
-<dd>Acceptor 'cn' name</dd>
+<dt><strong><code>start_date</code></strong> :&ensp;<code>str</code></dt>
+<dd><em>YYYY-MM-DD e.g 2022-01-30 the start time is always 00:00:00</em></dd>
+<dt><strong><code>end_date</code></strong> :&ensp;<code>str</code></dt>
+<dd><em>YYYY-MM-DD e.g 2022-01-30 the end time is always 23:59:59</em></dd>
+<dt><strong><code>login</code></strong> :&ensp;<code>str</code></dt>
+<dd><em>DR login from DC</em></dd>
+<dt><strong><code>password</code></strong> :&ensp;<code>str</code></dt>
+<dd><em>DR login from DC</em></dd>
+<dt><strong><code>acceptor</code></strong> :&ensp;<code>str</code></dt>
+<dd><em>Acceptor 'cn' name</em></dd>
 <dt><strong><code>batch_size</code></strong> :&ensp;<code>int</code></dt>
-<dd>Number of days in each batch</dd>
+<dd><em>Number of days in each batch</em></dd>
 </dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def batch_download_archipel(start_date, end_date, login, password, acceptor, batch_size):
-    &#34;&#34;&#34;Download large data set in smaller batches. Saves each batch in seperate file. 
-    Batches are saved to &#39;data/archipel/{acceptor}&#39;
+<pre><code class="python">def batch_download_archipel(start_date: str, end_date: str, login: str, password: str, acceptor: str, batch_size: str) -&gt; None:
+    &#34;&#34;&#34;_Download large data set in smaller batches. Saves each batch in seperate file.  
+    Batches are saved to &#39;data/archipel/{acceptor}_&#39;
 
     Args:
-        start_date (string): YYYY-MM-DD e.g 2022-01-30 the start time is always 00:00:00
-        end_date (string): YYYY-MM-DD e.g 2022-01-30 the end time is always 23:59:59
-        login (string): DR login from DC
-        password (string): DR login from DC
-        acceptor (string): Acceptor &#39;cn&#39; name
-        batch_size (int): Number of days in each batch
+        start_date (str): _YYYY-MM-DD e.g 2022-01-30 the start time is always 00:00:00_
+        end_date (str): _YYYY-MM-DD e.g 2022-01-30 the end time is always 23:59:59_
+        login (str): _DR login from DC_
+        password (str): _DR login from DC_
+        acceptor (str): _Acceptor &#39;cn&#39; name_
+        batch_size (int): _Number of days in each batch_
     &#34;&#34;&#34;
     if not os.path.exists(f&#39;data/archipel/{acceptor}&#39;):
         os.makedirs(f&#39;data/archipel/{acceptor}&#39;)
@@ -204,35 +202,35 @@ Batches are saved to 'data/archipel/{acceptor}'</p>
 </details>
 </dd>
 <dt id="druk.main.download_archipel_from_list"><code class="name flex">
-<span>def <span class="ident">download_archipel_from_list</span></span>(<span>login, password, start, end)</span>
+<span>def <span class="ident">download_archipel_from_list</span></span>(<span>login: str, password: str, start: str, end: str) ‑> None</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Opens acceptors.txt from root directory. Acceptor must be the 'cn' name.
-Iterates through acceptors and saves data to 'data/archipel'</p>
+<div class="desc"><p><em>Opens acceptors.txt from root directory. Each line must be the 'cn' name of the acceptor.<br>
+Iterates through acceptors and saves data to 'data/archipel</em>'</p>
 <h2 id="args">Args</h2>
 <dl>
-<dt><strong><code>login</code></strong> :&ensp;<code>string</code></dt>
-<dd>Datarequester login from DC</dd>
-<dt><strong><code>password</code></strong> :&ensp;<code>string</code></dt>
-<dd>Datarequester password from DC</dd>
-<dt><strong><code>start</code></strong> :&ensp;<code>string</code></dt>
-<dd>Start date and time YYYYMMDDHHMMSS e.g'20220130000000'</dd>
-<dt><strong><code>end</code></strong> :&ensp;<code>string</code></dt>
-<dd>End date and time YYYYMMDDHHMMSS e.g'20220130000000'</dd>
+<dt><strong><code>login</code></strong> :&ensp;<code>str</code></dt>
+<dd><em>DR login from DC</em></dd>
+<dt><strong><code>password</code></strong> :&ensp;<code>str</code></dt>
+<dd><em>DR password from DC</em></dd>
+<dt><strong><code>start</code></strong> :&ensp;<code>str</code></dt>
+<dd><em>Start date and time YYYYMMDDHHMMSS e.g'20220130000000'</em></dd>
+<dt><strong><code>end</code></strong> :&ensp;<code>str</code></dt>
+<dd><em>End date and time YYYYMMDDHHMMSS e.g'20220130000000'</em></dd>
 </dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def download_archipel_from_list(login, password, start, end):
-    &#34;&#34;&#34;Opens acceptors.txt from root directory. Acceptor must be the &#39;cn&#39; name.
-    Iterates through acceptors and saves data to &#39;data/archipel&#39;
+<pre><code class="python">def download_archipel_from_list(login: str, password: str, start: str, end: str) -&gt; None:
+    &#34;&#34;&#34;_Opens acceptors.txt from root directory. Each line must be the &#39;cn&#39; name of the acceptor.  
+    Iterates through acceptors and saves data to &#39;data/archipel_&#39;
 
     Args:
-        login (string): Datarequester login from DC
-        password (string): Datarequester password from DC
-        start (string): Start date and time YYYYMMDDHHMMSS e.g&#39;20220130000000&#39;
-        end (string): End date and time YYYYMMDDHHMMSS e.g&#39;20220130000000&#39;
+        login (str): _DR login from DC_
+        password (str): _DR password from DC_
+        start (str): _Start date and time YYYYMMDDHHMMSS e.g&#39;20220130000000&#39;_
+        end (str): _End date and time YYYYMMDDHHMMSS e.g&#39;20220130000000&#39;_
     &#34;&#34;&#34;
     if not os.path.exists(f&#39;data/archipel&#39;):
         os.makedirs(f&#39;data/archipel&#39;)
@@ -268,31 +266,31 @@ Iterates through acceptors and saves data to 'data/archipel'</p>
 </details>
 </dd>
 <dt id="druk.main.download_park_management_from_list"><code class="name flex">
-<span>def <span class="ident">download_park_management_from_list</span></span>(<span>login, password)</span>
+<span>def <span class="ident">download_park_management_from_list</span></span>(<span>login: str, password: str) ‑> None</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Opens parks.txt from root directory.
-parks.txt contains list of park 'cn' names.
-Iterate though list and saves data to 'data/park_management'</p>
+<div class="desc"><p><em>Opens parks.txt from root directory.<br>
+parks.txt contains list of park 'cn' names.<br>
+Iterate though list and saves data to 'data/park_management'</em></p>
 <h2 id="args">Args</h2>
 <dl>
-<dt><strong><code>login</code></strong> :&ensp;<code>string</code></dt>
-<dd>DR login from DC</dd>
-<dt><strong><code>password</code></strong> :&ensp;<code>string</code></dt>
-<dd>DR password from DC</dd>
+<dt><strong><code>login</code></strong> :&ensp;<code>str</code></dt>
+<dd><em>DR login from DC</em></dd>
+<dt><strong><code>password</code></strong> :&ensp;<code>str</code></dt>
+<dd><em>DR password from DC</em></dd>
 </dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def download_park_management_from_list(login, password):
-    &#34;&#34;&#34;Opens parks.txt from root directory.
-    parks.txt contains list of park &#39;cn&#39; names.
-    Iterate though list and saves data to &#39;data/park_management&#39;
+<pre><code class="python">def download_park_management_from_list(login: str, password: str) -&gt; None:
+    &#34;&#34;&#34;_Opens parks.txt from root directory.  
+    parks.txt contains list of park &#39;cn&#39; names.  
+    Iterate though list and saves data to &#39;data/park_management&#39;_
 
     Args:
-        login (string): DR login from DC
-        password (string): DR password from DC
+        login (str): _DR login from DC_
+        password (str): _DR password from DC_
     &#34;&#34;&#34;
     if not os.path.exists(f&#39;data/park_management&#39;):
         os.makedirs(f&#39;data/park_management&#39;)

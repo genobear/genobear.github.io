@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
 <title>druk.lib API documentation</title>
-<meta name="description" content="" />
+<meta name="description" content="2has:
+#1ash" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
 <link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
@@ -22,18 +23,35 @@
 <h1 class="title">Module <code>druk.lib</code></h1>
 </header>
 <section id="section-intro">
+<h2 id="2has">2has:</h2>
+<pre><code>#1ash
+</code></pre>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import time
+<pre><code class="python">&#34;&#34;&#34;
+##2has:
+    #1ash
+&#34;&#34;&#34;
+
 import os
-import requests
-from datetime import datetime, timedelta
+import time
 import traceback
+from datetime import datetime, timedelta
+from typing import Iterator
+
+import requests
 
 DATE_FORMAT = &#39;%Y-%m-%d&#39;
+&#34;&#34;&#34;**str**(&#39;%Y-%m-%d&#39;):  
+    Date [format](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes) used by string to datetime object translation
+&#34;&#34;&#34;
+
 DATE_STEP = timedelta(days=1)
+&#34;&#34;&#34;**int**(1):  
+    _Step in days between returned date ranges._
+&#34;&#34;&#34;
 
 
 def _strptime(string):
@@ -51,16 +69,13 @@ def _date_range_parameters(start, end, span_days):
     return start, end, span
 
 
-def forward_date_range(start: str, end: str, span_days: int) -&gt; tuple:
+def forward_date_range(start: str, end: str, span_days: int) -&gt; Iterator[tuple]:
     &#34;&#34;&#34;_Generate tuples of strings with intervals from given range of dates (forward)_
 
     Args:
         start (str): _YYYY-MM-DD_
         end (str): _YYYY-MM-DD_
         span_days (int): _Span of days_
-
-    Returns:
-        tuple: _A tuple including two dates formatted as strings &#39;YYYY-MM-DD&#39;_
 
     Yields:
         Iterator[tuple]: _Example: backward_date_range(&#39;2012-01-01&#39;, &#39;2012-01-05&#39;, 2)_  
@@ -140,7 +155,7 @@ def dr_retry_check(content: str) -&gt; bool:
         return False
 
 
-def download_archipel(start_date: str, end_date: str, login: str, password: str, acceptor: str):
+def download_archipel(start_date: str, end_date: str, login: str, password: str, acceptor: str) -&gt; str:
     &#34;&#34;&#34;
     _Download archipel data from data requester_  
     _Start date always starts from 00:00:00_  
@@ -190,6 +205,19 @@ def download_archipel(start_date: str, end_date: str, login: str, password: str,
 <section>
 </section>
 <section>
+<h2 class="section-title" id="header-variables">Global variables</h2>
+<dl>
+<dt id="druk.lib.DATE_FORMAT"><code class="name">var <span class="ident">DATE_FORMAT</span></code></dt>
+<dd>
+<div class="desc"><p><strong>str</strong>('%Y-%m-%d'):<br>
+Date <a href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes">format</a> used by string to datetime object translation</p></div>
+</dd>
+<dt id="druk.lib.DATE_STEP"><code class="name">var <span class="ident">DATE_STEP</span></code></dt>
+<dd>
+<div class="desc"><p><strong>int</strong>(1):<br>
+<em>Step in days between returned date ranges.</em></p></div>
+</dd>
+</dl>
 </section>
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
@@ -252,7 +280,7 @@ def download_archipel(start_date: str, end_date: str, login: str, password: str,
 </details>
 </dd>
 <dt id="druk.lib.download_archipel"><code class="name flex">
-<span>def <span class="ident">download_archipel</span></span>(<span>start_date: str, end_date: str, login: str, password: str, acceptor: str)</span>
+<span>def <span class="ident">download_archipel</span></span>(<span>start_date: str, end_date: str, login: str, password: str, acceptor: str) ‑> str</span>
 </code></dt>
 <dd>
 <div class="desc"><p><em>Download archipel data from data requester</em><br>
@@ -281,7 +309,7 @@ def download_archipel(start_date: str, end_date: str, login: str, password: str,
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def download_archipel(start_date: str, end_date: str, login: str, password: str, acceptor: str):
+<pre><code class="python">def download_archipel(start_date: str, end_date: str, login: str, password: str, acceptor: str) -&gt; str:
     &#34;&#34;&#34;
     _Download archipel data from data requester_  
     _Start date always starts from 00:00:00_  
@@ -394,7 +422,7 @@ Errors can be returned even though response code is 200(succesfully responded wi
 </details>
 </dd>
 <dt id="druk.lib.forward_date_range"><code class="name flex">
-<span>def <span class="ident">forward_date_range</span></span>(<span>start: str, end: str, span_days: int) ‑> tuple</span>
+<span>def <span class="ident">forward_date_range</span></span>(<span>start: str, end: str, span_days: int) ‑> Iterator[tuple]</span>
 </code></dt>
 <dd>
 <div class="desc"><p><em>Generate tuples of strings with intervals from given range of dates (forward)</em></p>
@@ -407,11 +435,6 @@ Errors can be returned even though response code is 200(succesfully responded wi
 <dt><strong><code>span_days</code></strong> :&ensp;<code>int</code></dt>
 <dd><em>Span of days</em></dd>
 </dl>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>tuple</code></dt>
-<dd><em>A tuple including two dates formatted as strings 'YYYY-MM-DD'</em></dd>
-</dl>
 <h2 id="yields">Yields</h2>
 <dl>
 <dt><code>Iterator[tuple]</code></dt>
@@ -423,16 +446,13 @@ Errors can be returned even though response code is 200(succesfully responded wi
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def forward_date_range(start: str, end: str, span_days: int) -&gt; tuple:
+<pre><code class="python">def forward_date_range(start: str, end: str, span_days: int) -&gt; Iterator[tuple]:
     &#34;&#34;&#34;_Generate tuples of strings with intervals from given range of dates (forward)_
 
     Args:
         start (str): _YYYY-MM-DD_
         end (str): _YYYY-MM-DD_
         span_days (int): _Span of days_
-
-    Returns:
-        tuple: _A tuple including two dates formatted as strings &#39;YYYY-MM-DD&#39;_
 
     Yields:
         Iterator[tuple]: _Example: backward_date_range(&#39;2012-01-01&#39;, &#39;2012-01-05&#39;, 2)_  
@@ -458,12 +478,20 @@ Errors can be returned even though response code is 200(succesfully responded wi
 <nav id="sidebar">
 <h1>Index</h1>
 <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#2has">2has:</a></li>
+</ul>
 </div>
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
 <li><code><a title="druk" href="index.html">druk</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-variables">Global variables</a></h3>
+<ul class="">
+<li><code><a title="druk.lib.DATE_FORMAT" href="#druk.lib.DATE_FORMAT">DATE_FORMAT</a></code></li>
+<li><code><a title="druk.lib.DATE_STEP" href="#druk.lib.DATE_STEP">DATE_STEP</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
